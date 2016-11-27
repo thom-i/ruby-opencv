@@ -6,10 +6,8 @@ data = 'haarcascade_frontalface_alt.xml'
 detector = CvHaarClassifierCascade::load(data)
 src_img = CvMat.load("Lenna.bmp")
 detector.detect_objects(src_img).each do |region|
-  color = CvColor::Blue
-  src_img.rectangle! region.top_left, region.bottom_right, :color => color
+  src_img.rectangle!(region.top_left, region.bottom_right, :color => color = CvColor::Blue, :thickness => 3)
 end
 
-window = GUI::Window.new('Face detection')
-window.show(src_img)
+GUI::Window.new('Result').show(src_img)
 GUI::wait_key

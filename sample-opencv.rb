@@ -2,7 +2,7 @@ require 'opencv'
 include OpenCV
 
 begin
-  src_img = CvMat.load("../image/Lenna.bmp")
+  src_img = CvMat.load("./image/Lenna.bmp")
 rescue
   puts 'Could not open or find the image.'
   exit

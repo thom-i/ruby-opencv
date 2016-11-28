@@ -1,8 +1,8 @@
 require 'opencv'
 include OpenCV
 
-src_img = CvMat.load('../image/char_sample.png')
-tmp_img = CvMat.load('../image/char_tmp.png')
+src_img = CvMat.load('./image/char_sample.png')
+tmp_img = CvMat.load('./image/char_tmp.png')
 
 result = src_img.match_template(tmp_img, CV_TM_SQDIFF)
 

@@ -2,9 +2,8 @@ require 'opencv'
 include OpenCV
 
 # 画像をロード
-src = CvMat.load("./image/score/kirakira/001.bmp")
-src_001 = CvMat.load("./image/score/kirakira/001.bmp")
-src_002 = CvMat.load("./image/score/kirakira/001.bmp")
+src = CvMat.load("./image/score.png")
+src_001 = src
 
 # グレースケール、二値化処理
 gray_img = src.BGR2GRAY.threshold(200, 255, CV_THRESH_BINARY_INV)
@@ -17,19 +16,10 @@ line_array = Array.new
 
 # 検出した直線を描画
 seq.each do |points|
-    # puts points[0].y, line_array.last[0].y if !line_array.empty? && (points[0].y line_array.last[0].y)
     line_array = line_array.push(points)
-    # puts points[0].y
-    p "==="
-    p points
-    p "=="
-
-    p *points
-    p "==="
     src_001.line!(points[0], points[1], :color => CvColor::Red, :thickness => 1)
 end
 
+GUI::Window.new("src").show(src)
 GUI::Window.new("src_001").show(src_001)
-# GUI::Window.new("src_001").show(src_001)
-# GUI::Window.new("src_002").show(src_002)
 GUI::wait_key
